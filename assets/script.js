@@ -33,7 +33,7 @@ function handleYes() {
     
     // Show success message
     setTimeout(() => {
-        showMessage("You Made My Day! 💕", "The bouquet is yours! Thank you for accepting it with such grace!");
+        showMessage("You Made My Day! 💕", "The bouquet is yours! Thank you!");
     }, 500);
 }
 
