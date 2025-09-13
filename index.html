@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <title>Kimberly's Bouquet🌸</title>
+</head>
+<body>
+    <div class="floating-petal" style="top: 10%; left: 5%; animation-delay: 0s;"></div>
+    <div class="floating-petal" style="top: 20%; left: 15%; animation-delay: 2s;"></div>
+    <div class="floating-petal" style="top: 30%; left: 25%; animation-delay: 4s;"></div>
+    <div class="floating-petal" style="top: 40%; left: 35%; animation-delay: 6s;"></div>
+    <div class="floating-petal" style="top: 50%; left: 45%; animation-delay: 8s;"></div>
+
+    <div class="container">
+        <h1>I hope you love this bouquet</h1>
+        <p class="subtitle">Goodluck, Kimberly 💕</p>
+        <div class="bouquet">💐</div>
+        <button class="surprise-btn" onclick="showModal()">Click for Your Surprise!</button>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2>A Bouquet Just For You! 🌹</h2>
+            <p>Nakalimutan ko ibigay kanina T-T</p>
+            <div class="modal-buttons">
+                <button class="modal-btn yes-btn" onclick="handleYes()">Yes! 💖</button>
+                <button class="modal-btn no-btn" id="noBtn" onclick="handleNo()">No 😅</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="messageDisplay" class="message-display"></div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>

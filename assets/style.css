@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow: hidden;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+h1 {
+    color: #d63384;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-out;
+}
+
+.subtitle {
+    color: #e91e63;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+}
+
+.bouquet {
+    font-size: 150px;
+    margin: 20px 0;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.bouquet:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.surprise-btn {
+    background: linear-gradient(135deg, #ff6b9d, #e91e63);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+    animation: pulse 2s infinite;
+    margin-top: 20px;
+}
+
+.surprise-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.5);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0; /* shorthand for top:0; left:0; right:0; bottom:0 */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+
+    /* Flexbox centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;        /* prevents sticking to edges on mobile */
+    overflow-y: auto;     /* allows scroll if modal is taller than screen */
+}
+
+.modal-content {
+    background: white;
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    animation: slideUp 0.5s ease;
+}
+
+.modal h2 {
+    color: #d63384;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.modal p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff6b9d, #e91e63);
+    color: white;
+}
+
+.yes-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(233, 30, 99, 0.4);
+}
+
+.no-btn {
+    background: #f0f0f0;
+    color: #666;
+    position: relative;
+}
+
+.no-btn:hover {
+    background: #e0e0e0;
+}
+
+.heart {
+    position: absolute;
+    color: #ff6b9d;
+    font-size: 30px;
+    animation: floatUp 3s ease-out forwards;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    animation: confettiFall 3s linear forwards;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+.sad-face {
+    position: absolute;
+    font-size: 50px;
+    animation: sadBounce 2s ease-out forwards;
+    pointer-events: none;
+    z-index: 2000;
+}
+
+.floating-petal {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ffb3d9, #ff6b9d);
+    border-radius: 0 100% 0 100%;
+    opacity: 0.7;
+    animation: petalFloat 15s infinite linear;
+    pointer-events: none;
+}
+
+.message-display {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 3000;
+    text-align: center;
+    animation: zoomIn 0.5s ease;
+}
+
+.message-display h2 {
+    color: #d63384;
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.message-display p {
+    color: #666;
+    font-size: 1.2em;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-300px) rotate(360deg);
+    }
+}
+
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100vh) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+@keyframes sadBounce {
+    0% {
+        transform: scale(0) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.5) rotate(180deg);
+    }
+
+    70% {
+        transform: scale(0.8) rotate(360deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+@keyframes petalFloat {
+    0% {
+        transform: translateX(-100px) translateY(100vh) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(-100vh) rotate(360deg);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes runAway {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(30px);
+    }
+
+    50% {
+        transform: translateX(-30px);
+    }
+
+    75% {
+        transform: translateX(30px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
